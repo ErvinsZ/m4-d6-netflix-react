@@ -58,7 +58,7 @@ class App extends Component {
     const commentsUrl = "https://striveschool.herokuapp.com/api/comments/";
     const comments = await fetch(commentsUrl + movieID, {
       headers: new Headers({
-        Authorization: "[INSERT_YOUR_AUTH_HERE]",
+        Authorization: btoa("user12:5s*f!thGyuC8xm&h"),
       }),
     }).then((response) => response.json());
     this.setState({ comments });

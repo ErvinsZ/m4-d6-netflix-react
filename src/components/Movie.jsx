@@ -26,7 +26,7 @@ class Movie extends Component {
       method: "POST",
       body: JSON.stringify(this.state.newComment),
       headers: new Headers({
-        Authorization: "[INSERT_YOUR_AUTH_HERE]",
+        Authorization: 'Basic dXNlcjEyOjVzKmYhdGhHeXVDOHhtJmg=',
         "Content-Type": "application/json",
       }),
     });
@@ -60,7 +60,7 @@ class Movie extends Component {
     const commentsUrl = "https://striveschool.herokuapp.com/api/comments/";
     const comments = await fetch(commentsUrl + movieID, {
       headers: new Headers({
-        Authorization: "[INSERT_YOUR_AUTH_HERE]",
+        Authorization: 'Basic dXNlcjEyOjVzKmYhdGhHeXVDOHhtJmg=',
       }),
     }).then((response) => response.json());
     this.setState({ comments });
