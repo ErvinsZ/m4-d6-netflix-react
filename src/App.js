@@ -19,7 +19,7 @@ class App extends Component {
     };
   }
 
-  url = "http://www.omdbapi.com/?apikey=[INSERT_YOUR_API_KEY_HERE]";
+  url = "http://www.omdbapi.com/?i=tt3896198&apikey=21ad049";
 
   componentDidMount = () => {
     Promise.all([

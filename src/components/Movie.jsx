@@ -56,6 +56,16 @@ class Movie extends Component {
     this.setState({ newComment });
   };
 
+  fetchComments = async (movieID) => {
+    const commentsUrl = "https://striveschool.herokuapp.com/api/comments/";
+    const comments = await fetch(commentsUrl + movieID, {
+      headers: new Headers({
+        Authorization: "[INSERT_YOUR_AUTH_HERE]",
+      }),
+    }).then((response) => response.json());
+    this.setState({ comments });
+  };
+
   render() {
     return (
       <Col className="mb-2" key={this.props.data.imdbID}>
