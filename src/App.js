@@ -4,6 +4,8 @@ import { Container, Alert, Dropdown } from "react-bootstrap";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Gallery from "./components/Gallery";
+import Register from "./components/Register"
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 class App extends Component {
   constructor(props) {
@@ -49,8 +51,11 @@ class App extends Component {
   showSearchResult = (searchString) => {
     fetch(this.url + "&s=" + searchString)
       .then((response) => response.json())
-      .then((responseObject) =>
-        this.setState({ searchedMovies: responseObject.Search })
+      .then((responseObject) => {
+        if (responseObject.Response === 'True') {
+          this.setState({ searchedMovies: responseObject.Search })
+        }
+      }
       );
   };
 
@@ -58,7 +63,7 @@ class App extends Component {
     const commentsUrl = "https://striveschool.herokuapp.com/api/comments/";
     const comments = await fetch(commentsUrl + movieID, {
       headers: new Headers({
-        Authorization: btoa("user12:5s*f!thGyuC8xm&h"),
+        Authorization: "[INSERT_YOUR_AUTH_HERE]",
       }),
     }).then((response) => response.json());
     this.setState({ comments });
@@ -66,9 +71,12 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
+
       <div className="App">
         <div>
           <Navbar showSearchResult={this.showSearchResult} />
+          <Route path = "/Register" exact component = {Register}/>
           <Container fluid className="px-4">
             <div className="d-flex justify-content-between">
               <div className="d-flex">
@@ -137,6 +145,7 @@ class App extends Component {
           </Container>
         </div>
       </div>
+      </Router>
     );
   }
 }

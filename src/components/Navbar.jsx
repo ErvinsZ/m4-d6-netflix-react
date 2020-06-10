@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import Register from './Register'
 import { Navbar, Nav, InputGroup, FormControl } from "react-bootstrap";
+import {Link} from 'react-router-dom'
 
 class NetflixNavbar extends Component {
   constructor(props) {
@@ -45,6 +47,10 @@ class NetflixNavbar extends Component {
             </Nav.Link>
             <Nav.Link className="font-weight-bold" href="/">
               My List
+            </Nav.Link>
+            
+            <Nav.Link as={Link} to="/Register" className="font-weight-bold">
+              Register
             </Nav.Link>
           </Nav>
           <span className="d-none d-md-flex align-items-center">
